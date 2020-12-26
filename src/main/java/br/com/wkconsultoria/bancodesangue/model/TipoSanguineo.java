@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,16 +24,10 @@ public class TipoSanguineo {
 	private String id;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "tipo_sanguineo_doador", 
-		joinColumns = { @JoinColumn(name = "tipo_sanguineo_id") },
-		inverseJoinColumns = { @JoinColumn(name="tipo_sanguineo_doador_id") }
-	)
-	private List<TipoSanguineo> doaPara;
-	
-	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "tipo_sanguineo_receptor", 
 		joinColumns = { @JoinColumn(name = "tipo_sanguineo_id") },
 		inverseJoinColumns = { @JoinColumn(name="tipo_sanguineo_receptor_id") }
 	)
-	private List<TipoSanguineo> recebeDe;
+	@JsonBackReference
+	private List<TipoSanguineo> receptor;
 }

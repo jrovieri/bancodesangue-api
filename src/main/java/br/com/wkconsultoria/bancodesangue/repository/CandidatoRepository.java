@@ -8,4 +8,5 @@ import br.com.wkconsultoria.bancodesangue.model.Candidato;
 @Repository
 public interface CandidatoRepository extends PagingAndSortingRepository<Candidato, Long> {
 
+	Candidato findById(long id);
 }
