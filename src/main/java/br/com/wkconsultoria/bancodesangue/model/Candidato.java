@@ -2,30 +2,34 @@ package br.com.wkconsultoria.bancodesangue.model;
 
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.Formula;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import br.com.wkconsultoria.bancodesangue.serializer.LocalDateDeserializer;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor
+@Getter @Setter @NoArgsConstructor
+@JsonIdentityInfo(property = "id",
+	scope = Long.class,
+	generator = ObjectIdGenerators.PropertyGenerator.class)
 public class Candidato {
 
 	@Id @Column
@@ -43,6 +47,7 @@ public class Candidato {
 	
 	@Column
 	@JsonAlias("data_nasc")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	@JsonDeserialize(using = LocalDateDeserializer.class)
 	private LocalDate dataNascimento;
 	
@@ -66,18 +71,17 @@ public class Candidato {
 	@Column
 	private int peso;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "contato_id", referencedColumnName = "id")
+	@Embedded
 	private Contato contato;
 	
 	@ManyToOne
 	@JoinColumn(name = "tipo_sanguineo_id", nullable = false)
 	@JsonAlias("tipo_sanguineo")
-	@JsonManagedReference
+	@JsonIdentityReference(alwaysAsId = true)
 	private TipoSanguineo tipoSanguineo;
 	
 	@Formula("ROUND(peso / (altura * altura), 0)")
-	private int imc;
+	private int imc = 0;
 	
 	@Formula("YEAR(NOW()) - YEAR(data_nascimento)")
 	private int idade;

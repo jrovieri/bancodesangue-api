@@ -10,7 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,6 +20,9 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter @NoArgsConstructor
+@JsonIdentityInfo(property = "id",
+	scope = Long.class,
+	generator = ObjectIdGenerators.PropertyGenerator.class)
 public class TipoSanguineo {
 
 	@Id @Column
@@ -28,6 +33,6 @@ public class TipoSanguineo {
 		joinColumns = { @JoinColumn(name = "tipo_sanguineo_id") },
 		inverseJoinColumns = { @JoinColumn(name="tipo_sanguineo_receptor_id") }
 	)
-	@JsonBackReference
+	@JsonIdentityReference(alwaysAsId = true)
 	private List<TipoSanguineo> receptor;
 }

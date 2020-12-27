@@ -64,7 +64,7 @@ public class CandidatoServiceImpl implements CandidatoService {
 				contato.get("estado"),
 				cb.count(candidato.get("id")).as(Double.class).alias("total"))
 			.groupBy(contato.get("estado"))
-			.orderBy((cb.desc(contato.get("estado"))));
+			.orderBy((cb.asc(contato.get("estado"))));
 		
 		return em.createQuery(cq).getResultList();
 	}
@@ -108,7 +108,7 @@ public class CandidatoServiceImpl implements CandidatoService {
 					.alias("total"))
 			.where(cb.greaterThan(candidato.get("imc"), 30))
 			.groupBy(candidato.get("sexo"))
-			.orderBy(cb.desc(candidato.get("sexo")));
+			.orderBy(cb.asc(candidato.get("sexo")));
 		
 		return em.createQuery(cq).getResultList();
 	}

@@ -9,5 +9,5 @@ public class QueryResultDTO {
 
 	private String text;
 	
-	private double number;
+	private double value;
 }
