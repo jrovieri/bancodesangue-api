@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.wkconsultoria.bancodesangue.dto.QueryResultDTO;
-import br.com.wkconsultoria.bancodesangue.service.CandidatoService;
+import br.com.wkconsultoria.bancodesangue.service.StatsService;
 
 @CrossOrigin
 @RestController
@@ -19,7 +19,7 @@ import br.com.wkconsultoria.bancodesangue.service.CandidatoService;
 public class StatsController {
 
 	@Autowired
-	private CandidatoService candidatoService;
+	private StatsService candidatoService;
 	
 	@GetMapping(value = "estado")
 	public ResponseEntity<?> getCountCandidatoPorEstado() {

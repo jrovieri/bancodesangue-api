@@ -1,4 +1,4 @@
-package br.com.wkconsultoria.bancodesangue.service;
+package br.com.wkconsultoria.bancodesangue.service.impl;
 
 import java.util.List;
 
@@ -17,9 +17,10 @@ import br.com.wkconsultoria.bancodesangue.dto.QueryResultDTO;
 import br.com.wkconsultoria.bancodesangue.model.Candidato;
 import br.com.wkconsultoria.bancodesangue.model.Contato;
 import br.com.wkconsultoria.bancodesangue.model.TipoSanguineo;
+import br.com.wkconsultoria.bancodesangue.service.StatsService;
 
 @Service
-public class CandidatoServiceImpl implements CandidatoService {
+public class StatsServiceImpl implements StatsService {
 
 	@Autowired
 	private EntityManager em;

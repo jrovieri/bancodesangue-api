@@ -9,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +39,7 @@ public class CandidatoController {
 	@Autowired
 	private CandidatoRepository candidatoRepository;
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping(value = "load", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ResponseEntity<?> loadJsonData(@RequestParam MultipartFile file) throws IOException {		
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -54,18 +56,21 @@ public class CandidatoController {
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(null);
 	}
 	
+	@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
 	@GetMapping("{id}")
 	public ResponseEntity<?> findById(@PathVariable long id) {
 		Candidato candidato = candidatoRepository.findById(id);
 		return ResponseEntity.status(HttpStatus.OK).body(candidato);
 	}
 	
+	@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
 	@PostMapping
 	public ResponseEntity<?> findAll(@RequestParam int page, @RequestParam int size) {
 		Page<Candidato> candidatos = candidatoRepository.findAll(PageRequest.of(page, size, Sort.by("nome")));
 		return ResponseEntity.status(HttpStatus.OK).body(candidatos.getContent());
 	}
 	
+	@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
 	@PatchMapping
 	public ResponseEntity<?> updateById(@RequestBody Candidato candidato) {
 		if (!candidatoRepository.existsById(candidato.getId()))
@@ -75,6 +80,7 @@ public class CandidatoController {
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(candidatoAtualizado);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> deleteById(@PathVariable long id) {
 		if (!candidatoRepository.existsById(id))

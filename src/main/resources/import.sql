@@ -7,34 +7,6 @@ INSERT INTO bancodesangue.tipo_sanguineo (id) VALUES ("AB-");
 INSERT INTO bancodesangue.tipo_sanguineo (id) VALUES ("O+");
 INSERT INTO bancodesangue.tipo_sanguineo (id) VALUES ("O-");
 
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("A+", "AB+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("A+", "A+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("A-", "A+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("A-", "A-");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("A-", "AB+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("A-", "AB-");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("B+", "B+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("B+", "AB+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("B-", "B+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("B-", "B-");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("B-", "AB+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("B-", "AB-");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("AB+", "AB+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("AB-", "AB+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("AB-", "AB-");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("O+", "A+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("O+", "B+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("O+", "O+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("O+", "AB+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("O-", "A+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("O-", "A-");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("O-", "B+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("O-", "B-");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("O-", "O+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("O-", "O-");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("O-", "AB+");
-INSERT INTO bancodesangue.tipo_sanguineo_doador (tipo_sanguineo_id, tipo_sanguineo_doador_id) VALUES ("O-", "AB-");
-
 INSERT INTO bancodesangue.tipo_sanguineo_receptor (tipo_sanguineo_id, tipo_sanguineo_receptor_id) VALUES ("A+", "A+");
 INSERT INTO bancodesangue.tipo_sanguineo_receptor (tipo_sanguineo_id, tipo_sanguineo_receptor_id) VALUES ("A+", "A-");
 INSERT INTO bancodesangue.tipo_sanguineo_receptor (tipo_sanguineo_id, tipo_sanguineo_receptor_id) VALUES ("A+", "O+");
@@ -62,3 +34,6 @@ INSERT INTO bancodesangue.tipo_sanguineo_receptor (tipo_sanguineo_id, tipo_sangu
 INSERT INTO bancodesangue.tipo_sanguineo_receptor (tipo_sanguineo_id, tipo_sanguineo_receptor_id) VALUES ("O+", "O+");
 INSERT INTO bancodesangue.tipo_sanguineo_receptor (tipo_sanguineo_id, tipo_sanguineo_receptor_id) VALUES ("O+", "O-");
 INSERT INTO bancodesangue.tipo_sanguineo_receptor (tipo_sanguineo_id, tipo_sanguineo_receptor_id) VALUES ("O-", "O-");
+
+INSERT INTO bancodesangue.role (name) VALUES ("ADMIN");
+INSERT INTO bancodesangue.role (name) VALUES ("USER");

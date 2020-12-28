@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.com.wkconsultoria.bancodesangue.dto.QueryResultDTO;
 
-public interface CandidatoService {
+public interface StatsService {
 
 	List<QueryResultDTO> countCandidatoPorEstado();
 	
