@@ -26,17 +26,28 @@ public class CommandLineStartupRunner implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
+		List<Role> roles = roleRepository.findAll();
+		
 		User admin = userRepository.findByUsername("admin");
-		if (admin == null) {
-			List<Role> roles = roleRepository.findAll();
-			
+		if (admin == null) {	
+			User userAdmin = new User();
+			userAdmin.setName("admin");
+			userAdmin.setUsername("admin");
+			userAdmin.setPassword("admin");
+			userAdmin.setEnabled(true);
+			userAdmin.setRoles(roles);
+			userService.save(userAdmin);
+		}
+		
+		User _user = userRepository.findByUsername("user");
+		if (_user == null) {
+			roles.remove(0);
 			User user = new User();
-			user.setName("admin");
-			user.setUsername("admin");
-			user.setPassword("admin");
+			user.setName("user");
+			user.setUsername("user");
+			user.setPassword("user");
 			user.setEnabled(true);
 			user.setRoles(roles);
-			
 			userService.save(user);
 		}
 	}
