@@ -64,7 +64,7 @@ public class CandidatoController {
 	}
 	
 	@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-	@PostMapping
+	@GetMapping
 	public ResponseEntity<?> findAll(@RequestParam int page, @RequestParam int size) {
 		Page<Candidato> candidatos = candidatoRepository.findAll(PageRequest.of(page, size, Sort.by("nome")));
 		return ResponseEntity.status(HttpStatus.OK).body(candidatos.getContent());
